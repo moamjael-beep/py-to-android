@@ -44,15 +44,11 @@ jobs:
       - name: Build APK
         env:
           ANDROID_SDK_ROOT: /home/runner/.buildozer/android/platform/android-sdk
-        run: buildozer android debug
+        run: buildozer android debug 2>&1 | tee /tmp/build.log ; exit ${PIPESTATUS[0]}
 
-      - name: Find and show errors if failed
+      - name: Show last 100 lines of build log
         if: failure()
-        run: |
-          echo "=== SEARCHING FOR ERRORS ==="
-          find .buildozer -name "*.log" 2>/dev/null | xargs grep -l "ERROR\|error\|failed" 2>/dev/null | head -5
-          grep -r "\[ERROR\]" .buildozer/ 2>/dev/null | tail -50
-          grep -r "Error\|FAILED\|exception" .buildozer/ 2>/dev/null | grep -v "DEBUG\|test\|\.pyc" | tail -30
+        run: tail -100 /tmp/build.log
 
       - name: Upload APK
         if: success()
