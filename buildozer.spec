@@ -29,7 +29,7 @@ android.permissions = android.permission.INTERNET, android.permission.WRITE_EXTE
 
 android.api = 33
 android.minapi = 24
-android.ndk = 25c
+android.ndk = 27c
 android.sdk = 33
 android.ndk_api = 24
 
