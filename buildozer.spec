@@ -18,7 +18,9 @@ version = 1.0.0
 # -----------------------------------------------------------------------
 # NOTE: pytubefix needs requests + certifi + urllib3 to work on Android.
 # imageio-ffmpeg and nodejs-wheel-binaries are NOT included (not Android-compatible).
-requirements = python3,kivy==2.3.0,pytubefix,requests,certifi,urllib3,idna,charset-normalizer
+requirements = python3,kivy,pytubefix,requests,certifi,urllib3,idna,charset-normalizer
+
+
 
 # -----------------------------------------------------------------------
 # Android settings
@@ -64,7 +66,7 @@ android.build_type = debug
 # -----------------------------------------------------------------------
 # Python for Android (p4a)
 # -----------------------------------------------------------------------
-p4a.branch = master
+p4a.branch = develop
 
 # Bootstrap: SDL2 is best for Kivy apps
 p4a.bootstrap = sdl2
